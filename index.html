@@ -1524,7 +1524,7 @@ audio {
         </div>
 
         <button
-            onclick="nextPage(6)">
+            onclick="trackEvent({page: "page9", event: "Back to Choices"}); nextPage(6)">
             ← Back to Choices
         </button>
 
@@ -1534,6 +1534,56 @@ audio {
 
 
 <script>
+
+/* =====================================================
+   GOOGLE SHEETS TRACKING
+===================================================== */
+
+const GOOGLE_SHEETS_URL =
+    "https://script.google.com/macros/s/AKfycbxkY4sTzEf1z8T697bDDn8mrEJsaYTrqoO-GXPWzzExONVtWFtDsTAxyJSgyTRzO-qv/exec";
+
+const sessionId =
+    sessionStorage.getItem("nancySessionId") ||
+    (
+        Date.now().toString(36) +
+        Math.random().toString(36).substring(2, 10)
+    );
+
+sessionStorage.setItem(
+    "nancySessionId",
+    sessionId
+);
+
+
+function trackEvent(data = {}) {
+
+    const payload = {
+        sessionId: sessionId,
+        page: data.page || ("page" + currentPage),
+        question: data.question || "",
+        answer: data.answer || "",
+        event: data.event || "",
+        result: data.result || ""
+    };
+
+    fetch(
+        GOOGLE_SHEETS_URL,
+        {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        }
+    ).catch(() => {
+        console.log(
+            "Tracking request failed."
+        );
+    });
+}
+
 
 /* =====================================================
    AUDIO
@@ -1578,6 +1628,11 @@ songPlayer.volume =
 
 function startExperience() {
 
+    trackEvent({
+        page: "page1",
+        event: "Start Experience"
+    });
+
     backgroundMusic
         .play()
         .catch(() => {
@@ -1603,6 +1658,11 @@ let currentPage = 1;
 
 
 function nextPage(pageNumber) {
+
+    trackEvent({
+        page: "page" + pageNumber,
+        event: "Page Open"
+    });
 
 
     /*
@@ -1738,6 +1798,8 @@ const message =
     );
 
 
+let sliderTrackTimer;
+
 slider.addEventListener(
     "input",
     function() {
@@ -1747,6 +1809,17 @@ slider.addEventListener(
             Number(
                 slider.value
             );
+
+        clearTimeout(sliderTrackTimer);
+
+        sliderTrackTimer = setTimeout(() => {
+            trackEvent({
+                page: "page2",
+                question: "How much do you love Kero?",
+                answer: value + "%",
+                event: "Love Level"
+            });
+        }, 500);
 
 
         percentage.textContent =
@@ -1816,11 +1889,34 @@ slider.addEventListener(
 
 
 
+
+/* Track the important audio actions */
+songPlayer.addEventListener("play", function() {
+    trackEvent({
+        page: "page7",
+        event: "Song Play"
+    });
+});
+
+songPlayer.addEventListener("pause", function() {
+    trackEvent({
+        page: "page7",
+        event: "Song Pause"
+    });
+});
+
+
 /* =====================================================
    MOVING BUTTON
 ===================================================== */
 
 function moveButton() {
+
+    trackEvent({
+        page: "page3",
+        answer: "Let me think",
+        event: "Button Click"
+    });
 
 
     const button =
@@ -1983,6 +2079,15 @@ function showQuestion() {
 
 function answerQuiz(index) {
 
+    const q = questions[quizIndex];
+
+    trackEvent({
+        page: "page4",
+        question: q.question,
+        answer: q.options[index],
+        event: "Quiz Answer"
+    });
+
 
     quizScore++;
 
@@ -2047,6 +2152,12 @@ function showFinalScore() {
         )
         .textContent =
         final + "%";
+
+    trackEvent({
+        page: "page5",
+        event: "Final Score",
+        result: final + "%"
+    });
 
 
     const scoreMessage =
