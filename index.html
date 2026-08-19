@@ -848,6 +848,42 @@ audio {
 
 
 /* =====================================================
+   FINAL PHOTO PAGE
+===================================================== */
+
+.final-photo {
+    width: 100%;
+    max-width: 430px;
+    max-height: 62vh;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto 10px;
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.20);
+    border: 4px solid #fff;
+}
+
+.final-love {
+    font-size: 42px;
+    font-weight: bold;
+    color: #e91e63;
+    margin: 18px 0 8px;
+    direction: rtl;
+    text-shadow: 0 3px 10px rgba(233,30,99,0.18);
+}
+
+.final-hearts {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.final-note {
+    font-size: 17px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -1440,7 +1476,7 @@ audio {
 
 
         <button
-            onclick="celebrate()">
+            onclick="nextPage(9)">
 
             ❤️ Finish
 
@@ -1450,6 +1486,51 @@ audio {
 
 </section>
 
+
+
+<!-- =====================================================
+     PAGE 9 — FINAL PHOTO
+===================================================== -->
+
+<section
+    id="page9"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            💖
+        </div>
+
+        <h1>
+            One Last Thing... ❤️
+        </h1>
+
+        <p class="final-note">
+            This is for you, Nancy ❤️
+        </p>
+
+        <img
+            class="final-photo"
+            src="/nancy/images/nancy.jpg"
+            alt="Nancy">
+
+        <div class="final-love">
+            ❤️ بحبك ❤️
+        </div>
+
+        <div class="final-hearts">
+            💕 💗 💖 💕
+        </div>
+
+        <button
+            onclick="nextPage(6)">
+            ← Back to Choices
+        </button>
+
+    </div>
+
+</section>
 
 
 <script>
