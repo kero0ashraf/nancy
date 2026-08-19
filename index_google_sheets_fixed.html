@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>For Nancy ❤️</title>
+
+
+<style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff758c,
+            #ff7eb3
+        );
+
+    color: #444;
+}
+
+
+/* =====================================================
+   PAGES
+===================================================== */
+
+.page {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(1.05);
+
+    transition:
+        all 0.7s ease;
+
+    z-index: 2;
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+
+    width: 92%;
+
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background:
+        rgba(255,255,255,0.96);
+
+    padding: 40px 30px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.25);
+}
+
+
+.card::-webkit-scrollbar {
+
+    width: 0;
+}
+
+
+/* =====================================================
+   HEART
+===================================================== */
+
+.big-heart {
+
+    font-size: 70px;
+
+    animation:
+        heartbeat 1.2s infinite;
+}
+
+
+@keyframes heartbeat {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+    }
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+h1 {
+
+    color: #e91e63;
+
+    font-size: 32px;
+
+    margin: 15px 0;
+}
+
+
+h2 {
+
+    color: #555;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+}
+
+
+p {
+
+    color: #888;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    background: #e91e63;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin: 8px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(233,30,99,0.3);
+
+    transition:
+        transform 0.3s,
+        background 0.3s;
+}
+
+
+button:hover {
+
+    transform:
+        scale(1.07);
+
+    background:
+        #c2185b;
+}
+
+
+.secondary {
+
+    background:
+        #777;
+}
+
+
+.secondary:hover {
+
+    background:
+        #555;
+}
+
+
+/* =====================================================
+   LOVE BAROMETER
+===================================================== */
+
+.barometer {
+
+    width: 100%;
+
+    margin: 30px auto;
+}
+
+
+.scale {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+
+.bar {
+
+    height: 25px;
+
+    width: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            to right,
+            #ddd,
+            #ffb3c6,
+            #ff4d6d,
+            #e91e63
+        );
+
+    box-shadow:
+        inset 0 2px 5px
+        rgba(0,0,0,0.15);
+}
+
+
+input[type="range"] {
+
+    width: 100%;
+
+    margin-top: -25px;
+
+    position: relative;
+
+    z-index: 5;
+
+    appearance: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 5px solid #e91e63;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0,0,0,0.3);
+}
+
+
+input[type="range"]::-moz-range-thumb {
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 5px solid #e91e63;
+}
+
+
+.percentage {
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    color: #e91e63;
+
+    margin: 15px 0 5px;
+}
+
+
+.message {
+
+    min-height: 30px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   ARE YOU SURE
+===================================================== */
+
+.choice-buttons {
+
+    margin-top: 25px;
+}
+
+
+#thinkButton {
+
+    position: relative;
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.quiz-question {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #555;
+
+    margin:
+        25px 0 15px;
+}
+
+
+.quiz-option {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 10px 0;
+
+    background:
+        #fff0f5;
+
+    color:
+        #e91e63;
+
+    border:
+        2px solid #ffd0df;
+
+    box-shadow: none;
+}
+
+
+.quiz-option:hover {
+
+    background:
+        #e91e63;
+
+    color: white;
+}
+
+
+/* =====================================================
+   SCORE
+===================================================== */
+
+.score {
+
+    font-size: 75px;
+
+    font-weight: bold;
+
+    color: #e91e63;
+
+    margin: 15px 0;
+}
+
+
+.score-message {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   SURPRISE BOXES
+===================================================== */
+
+.surprise-container {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.surprise-box {
+
+    flex: 1;
+
+    padding: 30px 15px;
+
+    border-radius: 25px;
+
+    background:
+        #fff0f5;
+
+    border:
+        2px solid #ffd0df;
+
+    cursor: pointer;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.surprise-box:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        #ffe0eb;
+
+    box-shadow:
+        0 10px 25px
+        rgba(233,30,99,0.2);
+}
+
+
+.surprise-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 10px;
+}
+
+
+.surprise-title {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #e91e63;
+}
+
+
+/* =====================================================
+   SONG
+===================================================== */
+
+.song-cover {
+
+    font-size: 80px;
+
+    animation:
+        heartbeat 1.2s infinite;
+}
+
+
+audio {
+
+    width: 100%;
+
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.paper-message {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 450px;
+
+    margin: 20px auto;
+
+    padding: 10px 0;
+
+    transform:
+        rotate(-1deg);
+}
+
+
+.letter {
+
+    position: relative;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #fffdf5 0px,
+            #fffdf5 31px,
+            #b9d7ff 32px
+        );
+
+    padding:
+        35px
+        28px
+        35px
+        55px;
+
+    min-height: 500px;
+
+    text-align: left;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.18);
+
+    border-radius: 3px;
+
+    font-family:
+        "Comic Sans MS",
+        "Segoe Print",
+        cursive;
+
+    color: #444;
+
+    line-height: 32px;
+}
+
+
+.letter::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 42px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        #ff9aa2;
+
+    opacity:
+        0.7;
+}
+
+
+.letter h2 {
+
+    margin:
+        0 0 20px;
+
+    color:
+        #e91e63;
+
+    font-family:
+        "Comic Sans MS",
+        "Segoe Print",
+        cursive;
+
+    font-size:
+        23px;
+
+    font-weight:
+        bold;
+}
+
+
+.letter p {
+
+    margin:
+        0 0 12px;
+
+    color:
+        #444;
+
+    font-size:
+        17px;
+
+    line-height:
+        32px;
+}
+
+
+.signature {
+
+    margin-top:
+        25px;
+
+    text-align:
+        right;
+
+    color:
+        #e91e63;
+
+    font-size:
+        19px;
+
+    line-height:
+        28px;
+}
+
+
+.paper-holes {
+
+    position:
+        absolute;
+
+    left:
+        10px;
+
+    top:
+        45px;
+
+    z-index:
+        5;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        70px;
+}
+
+
+.paper-holes span {
+
+    width:
+        14px;
+
+    height:
+        14px;
+
+    background:
+        #ff758c;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        inset 0 2px 4px
+        rgba(0,0,0,0.25);
+}
+
+
+/* =====================================================
+   MOUSE HEARTS
+===================================================== */
+
+.mouse-heart {
+
+    position:
+        fixed;
+
+    pointer-events:
+        none;
+
+    z-index:
+        9999;
+
+    transition:
+        transform 0.8s ease-out,
+        opacity 0.8s ease-out;
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+.floating-heart {
+
+    position:
+        fixed;
+
+    bottom:
+        -50px;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0.6;
+
+    animation:
+        floatUp linear infinite;
+
+    z-index:
+        1;
+}
+
+
+@keyframes floatUp {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:
+            0;
+    }
+
+    20% {
+
+        opacity:
+            0.7;
+    }
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+.confetti {
+
+    position:
+        fixed;
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    top:
+        -20px;
+
+    z-index:
+        10000;
+
+    pointer-events:
+        none;
+
+    animation:
+        confettiFall
+        3s linear forwards;
+}
+
+
+@keyframes confettiFall {
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================================
+   FINAL PHOTO PAGE
+===================================================== */
+
+.final-photo {
+    width: 100%;
+    max-width: 430px;
+    max-height: 62vh;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto 10px;
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.20);
+    border: 4px solid #fff;
+}
+
+.final-love {
+    font-size: 42px;
+    font-weight: bold;
+    color: #e91e63;
+    margin: 18px 0 8px;
+    direction: rtl;
+    text-shadow: 0 3px 10px rgba(233,30,99,0.18);
+}
+
+.final-hearts {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.final-note {
+    font-size: 17px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        padding:
+            30px 20px;
+    }
+
+    h1 {
+
+        font-size:
+            27px;
+    }
+
+    h2 {
+
+        font-size:
+            19px;
+    }
+
+    .surprise-container {
+
+        flex-direction:
+            column;
+    }
+
+    .surprise-box {
+
+        padding:
+            22px;
+    }
+
+    .letter {
+
+        padding:
+            30px
+            20px
+            30px
+            45px;
+
+        min-height:
+            520px;
+    }
+
+    .letter::before {
+
+        left:
+            35px;
+    }
+
+    .letter p {
+
+        font-size:
+            15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND MUSIC
+===================================================== -->
+
+<audio
+    id="backgroundMusic"
+    loop
+    preload="auto">
+
+    <source
+        src="/nancy/music/background.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
+
+<section
+    id="page1"
+    class="page active">
+
+    <div class="card">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Welcome, Nancy ❤️
+        </h1>
+
+        <h2>
+
+            Kero wants to know...
+
+            <br><br>
+
+            How much do you love him?
+
+        </h2>
+
+        <p>
+            Be honest... 👀💕
+        </p>
+
+        <button
+            onclick="startExperience()">
+
+            Let's Begin ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 2
+===================================================== -->
+
+<section
+    id="page2"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Choose Your Love Level
+        </h1>
+
+        <p>
+            How much do you love Kero?
+        </p>
+
+
+        <div class="barometer">
+
+            <div class="scale">
+
+                <span>0%</span>
+                <span>25%</span>
+                <span>50%</span>
+                <span>75%</span>
+                <span>100%</span>
+
+            </div>
+
+
+            <div class="bar"></div>
+
+
+            <input
+                type="range"
+                id="loveSlider"
+                min="0"
+                max="100"
+                value="50">
+
+        </div>
+
+
+        <div class="percentage">
+
+            <span id="percentage">
+                50
+            </span>%
+
+        </div>
+
+
+        <div
+            class="message"
+            id="message">
+
+            Okay, I can work with that ❤️
+
+        </div>
+
+
+        <button
+            onclick="nextPage(3)">
+
+            Continue ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 3
+===================================================== -->
+
+<section
+    id="page3"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            👀❤️
+        </div>
+
+        <h1>
+            Are You Sure?
+        </h1>
+
+        <h2>
+            Are you really sure about your answer?
+        </h2>
+
+        <p>
+            Kero will remember this answer forever... 😂
+        </p>
+
+
+        <div class="choice-buttons">
+
+            <button
+                onclick="nextPage(4)">
+
+                YES ❤️
+
+            </button>
+
+
+            <button
+                id="thinkButton"
+                class="secondary"
+                onclick="moveButton()">
+
+                Let me think... 😂
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 4
+===================================================== -->
+
+<section
+    id="page4"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            💕
+        </div>
+
+        <h1>
+            Love Quiz
+        </h1>
+
+        <p>
+            Let's see how well you know Kero ❤️
+        </p>
+
+
+        <div
+            id="quizContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 5
+===================================================== -->
+
+<section
+    id="page5"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            💖
+        </div>
+
+        <h1>
+            Nancy's Love Score
+        </h1>
+
+
+        <div
+            class="score"
+            id="finalScore">
+
+            100%
+
+        </div>
+
+
+        <div
+            class="score-message"
+            id="scoreMessage">
+
+            Kero knew it all along! 🥰
+
+        </div>
+
+
+        <p>
+            ❤️ ❤️ ❤️
+        </p>
+
+
+        <button
+            onclick="nextPage(6)">
+
+            One Last Surprise... 🎁
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 6 — CHOOSE
+===================================================== -->
+
+<section
+    id="page6"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            🎁
+        </div>
+
+        <h1>
+            One Last Choice...
+        </h1>
+
+        <p>
+            What would you like from Kero?
+        </p>
+
+
+        <div class="surprise-container">
+
+
+            <div
+                class="surprise-box"
+                onclick="nextPage(7)">
+
+                <div class="surprise-icon">
+                    🎵
+                </div>
+
+                <div class="surprise-title">
+                    A Song You Love
+                </div>
+
+                <p>
+                    Listen to your special song ❤️
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="surprise-box"
+                onclick="nextPage(8)">
+
+                <div class="surprise-icon">
+                    💌
+                </div>
+
+                <div class="surprise-title">
+                    A Message From Kero
+                </div>
+
+                <p>
+                    Something Kero wants to tell you ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 7 — SONG
+===================================================== -->
+
+<section
+    id="page7"
+    class="page">
+
+    <div class="card">
+
+        <div class="song-cover">
+            🎵❤️
+        </div>
+
+        <h1>
+            A Song For You
+        </h1>
+
+        <p>
+            This one is for you, Nancy ❤️
+        </p>
+
+
+        <audio
+            id="songPlayer"
+            controls
+            preload="metadata">
+
+            <source
+                src="/nancy/music/song.mp3"
+                type="audio/mpeg">
+
+            Your browser does not support
+            the audio element.
+
+        </audio>
+
+
+        <br>
+
+
+        <button
+            class="secondary"
+            onclick="nextPage(6)">
+
+            ← Back to Choices
+
+        </button>
+
+
+        <button
+            onclick="nextPage(8)">
+
+            Continue 💌
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 8 — MESSAGE
+===================================================== -->
+
+<section
+    id="page8"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            💌
+        </div>
+
+        <h1>
+            A Message From Kero
+        </h1>
+
+
+        <div class="paper-message">
+
+
+            <div class="paper-holes">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="letter">
+
+                <h2>
+                    Dear Nancy ❤️
+                </h2>
+
+
+                <p>
+                    وجودك شيء مهم في حياتي،
+                </p>
+
+
+                <p>
+                    وبسببك حياتي اتغيرت،
+                    مش عارف ده متلاحظ ولا لا...
+                </p>
+
+
+                <p>
+                    بس إنتِ السبب إني بقيت عايز
+                    أجري كده وأعمل كل حاجة بسرعة،
+                    وأحقق حاجات أكتر.
+                </p>
+
+
+                <p>
+                    أنا عايزك جنبي،
+                    اسنديني دايمًا،
+                    وخليني دايمًا أسندك أنا كمان. ❤️
+                </p>
+
+
+                <p>
+                    شكرًا لوجودك دايمًا معايا،
+                    وشكرًا إنك جزء من حياتي.
+                </p>
+
+
+                <p>
+                    أنا بس حبيت أقولك الكلام ده...
+                    بطريقة لذيذة شوية. 🥹❤️
+                </p>
+
+
+                <div class="signature">
+
+                    Love,
+
+                    <br>
+
+                    Kero ❤️
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="secondary"
+            onclick="nextPage(6)">
+
+            ← Back to Choices
+
+        </button>
+
+
+        <button
+            onclick="nextPage(9)">
+
+            ❤️ Finish
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 9 — FINAL PHOTO
+===================================================== -->
+
+<section
+    id="page9"
+    class="page">
+
+    <div class="card">
+
+        <div class="big-heart">
+            💖
+        </div>
+
+        <h1>
+            One Last Thing... ❤️
+        </h1>
+
+        <p class="final-note">
+            This is for you, Nancy ❤️
+        </p>
+
+        <img
+            class="final-photo"
+            src="/nancy/images/nancy.jpeg"
+            alt="Nancy">
+
+        <div class="final-love">
+            ❤️ بحبك ❤️
+        </div>
+
+        <div class="final-hearts">
+            💕 💗 💖 💕
+        </div>
+
+        <button
+            onclick="trackEvent({page: "page9", event: "Back to Choices"}); nextPage(6)">
+            ← Back to Choices
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE SHEETS TRACKING
+===================================================== */
+
+const GOOGLE_SHEETS_URL =
+    "https://script.google.com/macros/s/AKfycbxkY4sTzEf1z8T697bDDn8mrEJsaYTrqoO-GXPWzzExONVtWFtDsTAxyJSgyTRzO-qv/exec";
+
+const sessionId =
+    sessionStorage.getItem("nancySessionId") ||
+    (
+        Date.now().toString(36) +
+        Math.random().toString(36).substring(2, 10)
+    );
+
+sessionStorage.setItem(
+    "nancySessionId",
+    sessionId
+);
+
+function trackEvent(data = {}) {
+
+    const payload = {
+        sessionId: sessionId,
+        page: data.page || ("page" + currentPage),
+        question: data.question || "",
+        answer: data.answer || "",
+        event: data.event || "",
+        result: data.result || ""
+    };
+
+    /*
+       We use GET here because it works reliably from
+       a GitHub Pages site to a Google Apps Script Web App
+       without CORS/preflight problems.
+    */
+    const query = new URLSearchParams({
+        sessionId: payload.sessionId,
+        page: payload.page,
+        question: payload.question,
+        answer: payload.answer,
+        event: payload.event,
+        result: payload.result
+    });
+
+    const trackingPixel = new Image();
+
+    trackingPixel.src =
+        GOOGLE_SHEETS_URL + "?" + query.toString();
+}
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+const backgroundMusic =
+    document.getElementById(
+        "backgroundMusic"
+    );
+
+
+const songPlayer =
+    document.getElementById(
+        "songPlayer"
+    );
+
+
+/*
+   Background volume
+
+   0.25 = 25%
+*/
+
+backgroundMusic.volume =
+    0.25;
+
+
+/*
+   Song volume
+
+   0.80 = 80%
+*/
+
+songPlayer.volume =
+    0.80;
+
+
+
+/* =====================================================
+   START EXPERIENCE
+===================================================== */
+
+function startExperience() {
+
+    trackEvent({
+        page: "page1",
+        event: "Start Experience"
+    });
+
+    backgroundMusic
+        .play()
+        .catch(() => {
+
+            console.log(
+                "Background music was blocked."
+            );
+
+        });
+
+
+    nextPage(2);
+
+}
+
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+let currentPage = 1;
+
+
+function nextPage(pageNumber) {
+
+    trackEvent({
+        page: "page" + pageNumber,
+        event: "Page Open"
+    });
+
+
+    /*
+       If leaving Song Page
+       stop the song
+    */
+
+    if (
+        currentPage === 7 &&
+        pageNumber !== 7
+    ) {
+
+        songPlayer.pause();
+
+        songPlayer.currentTime = 0;
+
+    }
+
+
+
+    /*
+       Page 1 → Page 6
+       Background music ON
+    */
+
+    if (
+        pageNumber >= 2 &&
+        pageNumber <= 6
+    ) {
+
+        backgroundMusic
+            .play()
+            .catch(() => {});
+
+    }
+
+
+
+    /*
+       Page 7:
+       Stop the background music so the song can be heard.
+
+       Page 8 and Page 9:
+       Keep the background music playing.
+       This means choosing the Message box will NOT
+       stop the background music.
+    */
+
+    if (
+        pageNumber === 7
+    ) {
+
+        backgroundMusic.pause();
+
+        backgroundMusic.currentTime = 0;
+
+    }
+
+    /*
+       When returning to Page 8 or Page 9 from Page 7,
+       resume the background music.
+    */
+
+    if (
+        pageNumber >= 8
+    ) {
+
+        backgroundMusic
+            .play()
+            .catch(() => {});
+
+    }
+
+
+
+    /*
+       Hide current page
+    */
+
+    document
+        .getElementById(
+            "page" + currentPage
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+
+    /*
+       Show new page
+    */
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "page" + pageNumber
+            )
+            .classList.add(
+                "active"
+            );
+
+
+        currentPage =
+            pageNumber;
+
+
+
+        if (
+            pageNumber === 4
+        ) {
+
+            startQuiz();
+
+        }
+
+
+        if (
+            pageNumber === 5
+        ) {
+
+            showFinalScore();
+
+        }
+
+
+    }, 250);
+
+}
+
+
+
+/* =====================================================
+   LOVE BAROMETER
+===================================================== */
+
+const slider =
+    document.getElementById(
+        "loveSlider"
+    );
+
+
+const percentage =
+    document.getElementById(
+        "percentage"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+let sliderTrackTimer;
+
+slider.addEventListener(
+    "input",
+    function() {
+
+
+        const value =
+            Number(
+                slider.value
+            );
+
+        clearTimeout(sliderTrackTimer);
+
+        sliderTrackTimer = setTimeout(() => {
+            trackEvent({
+                page: "page2",
+                question: "How much do you love Kero?",
+                answer: value + "%",
+                event: "Love Level"
+            });
+        }, 500);
+
+
+        percentage.textContent =
+            value;
+
+
+
+        if (
+            value <= 20
+        ) {
+
+            message.textContent =
+                "Ouch... that's cold 🥲";
+
+        }
+
+
+        else if (
+            value <= 40
+        ) {
+
+            message.textContent =
+                "Hmm... we need to talk 😂";
+
+        }
+
+
+        else if (
+            value <= 60
+        ) {
+
+            message.textContent =
+                "Okay, I can work with that ❤️";
+
+        }
+
+
+        else if (
+            value <= 80
+        ) {
+
+            message.textContent =
+                "Now we're talking! 😍";
+
+        }
+
+
+        else if (
+            value < 100
+        ) {
+
+            message.textContent =
+                "I knew you couldn't resist ❤️";
+
+        }
+
+
+        else {
+
+            message.textContent =
+                "I KNEW IT! You love me! ❤️🥰";
+
+        }
+
+    }
+);
+
+
+
+
+/* Track the important audio actions */
+songPlayer.addEventListener("play", function() {
+    trackEvent({
+        page: "page7",
+        event: "Song Play"
+    });
+});
+
+songPlayer.addEventListener("pause", function() {
+    trackEvent({
+        page: "page7",
+        event: "Song Pause"
+    });
+});
+
+
+/* =====================================================
+   MOVING BUTTON
+===================================================== */
+
+function moveButton() {
+
+    trackEvent({
+        page: "page3",
+        answer: "Let me think",
+        event: "Button Click"
+    });
+
+
+    const button =
+        document.getElementById(
+            "thinkButton"
+        );
+
+
+    const randomX =
+        (
+            Math.random() * 100
+        ) - 50;
+
+
+    const randomY =
+        (
+            Math.random() * 80
+        ) - 40;
+
+
+    button.style.transform =
+        `translate(
+            ${randomX}px,
+            ${randomY}px
+        )`;
+
+}
+
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions = [
+
+    {
+
+        question:
+            "Who is luckier to have the other? 😏",
+
+        options: [
+
+            "Kero ❤️",
+
+            "Nancy ❤️",
+
+            "Both of us 💕"
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Who loves the other more? 👀",
+
+        options: [
+
+            "Nancy ❤️",
+
+            "Kero ❤️",
+
+            "It's a tie 😂"
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "What's the correct answer to every question? 😎",
+
+        options: [
+
+            "Kero is right 😂",
+
+            "Nancy is right ❤️",
+
+            "Love wins 💕"
+
+        ]
+
+    }
+
+];
+
+
+let quizIndex = 0;
+
+let quizScore = 0;
+
+
+function startQuiz() {
+
+    quizIndex = 0;
+
+    quizScore = 0;
+
+    showQuestion();
+
+}
+
+
+function showQuestion() {
+
+
+    const container =
+        document.getElementById(
+            "quizContainer"
+        );
+
+
+    const q =
+        questions[
+            quizIndex
+        ];
+
+
+    let html = `
+
+        <div class="quiz-question">
+
+            ${q.question}
+
+        </div>
+
+    `;
+
+
+    q.options.forEach(
+        (option, index) => {
+
+
+            html += `
+
+                <button
+                    class="quiz-option"
+                    onclick="answerQuiz(${index})">
+
+                    ${option}
+
+                </button>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+function answerQuiz(index) {
+
+    const q = questions[quizIndex];
+
+    trackEvent({
+        page: "page4",
+        question: q.question,
+        answer: q.options[index],
+        event: "Quiz Answer"
+    });
+
+
+    quizScore++;
+
+    quizIndex++;
+
+
+    if (
+        quizIndex <
+        questions.length
+    ) {
+
+        showQuestion();
+
+    }
+
+
+    else {
+
+        setTimeout(
+            () => {
+
+                nextPage(5);
+
+            },
+            500
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FINAL SCORE
+===================================================== */
+
+function showFinalScore() {
+
+
+    const loveValue =
+        Number(
+            slider.value
+        );
+
+
+    const quizBonus =
+        quizScore * 2;
+
+
+    const final =
+        Math.min(
+            100,
+            loveValue +
+            quizBonus
+        );
+
+
+    document
+        .getElementById(
+            "finalScore"
+        )
+        .textContent =
+        final + "%";
+
+    trackEvent({
+        page: "page5",
+        event: "Final Score",
+        result: final + "%"
+    });
+
+
+    const scoreMessage =
+        document.getElementById(
+            "scoreMessage"
+        );
+
+
+    if (
+        final >= 95
+    ) {
+
+        scoreMessage.textContent =
+            "Kero knew it all along! You really love him! ❤️🥰";
+
+    }
+
+
+    else if (
+        final >= 80
+    ) {
+
+        scoreMessage.textContent =
+            "That's a serious amount of love! 😍❤️";
+
+    }
+
+
+    else if (
+        final >= 60
+    ) {
+
+        scoreMessage.textContent =
+            "Not bad... but Kero expects more! 😂❤️";
+
+    }
+
+
+    else {
+
+        scoreMessage.textContent =
+            "We need another round of questions! 😂";
+
+    }
+
+
+    createConfetti();
+
+}
+
+
+
+/* =====================================================
+   MOUSE HEART TRAIL
+===================================================== */
+
+let lastHeartTime = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+
+        const now =
+            Date.now();
+
+
+        if (
+            now -
+            lastHeartTime <
+            70
+        ) {
+
+            return;
+
+        }
+
+
+        lastHeartTime =
+            now;
+
+
+        const heart =
+            document.createElement(
+                "div"
+            );
+
+
+        heart.className =
+            "mouse-heart";
+
+
+        const hearts = [
+
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "💘"
+
+        ];
+
+
+        heart.innerHTML =
+            hearts[
+                Math.floor(
+                    Math.random()
+                    *
+                    hearts.length
+                )
+            ];
+
+
+        heart.style.left =
+            e.clientX +
+            "px";
+
+
+        heart.style.top =
+            e.clientY +
+            "px";
+
+
+        heart.style.fontSize =
+            (
+                12 +
+                Math.random() * 18
+            ) +
+            "px";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        const moveX =
+            (
+                Math.random()
+                - 0.5
+            ) * 70;
+
+
+        const moveY =
+            -30 -
+            Math.random() * 60;
+
+
+        setTimeout(
+            () => {
+
+
+                heart.style.transform =
+                    `translate(
+                        ${moveX}px,
+                        ${moveY}px
+                    )
+                    scale(0.2)`;
+
+
+                heart.style.opacity =
+                    "0";
+
+
+            },
+            20
+        );
+
+
+        setTimeout(
+            () => {
+
+                heart.remove();
+
+            },
+            900
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+const floatingHearts = [
+
+    "❤️",
+    "💕",
+    "💗",
+    "💖",
+    "💘"
+
+];
+
+
+for (
+    let i = 0;
+    i < 18;
+    i++
+) {
+
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+
+    heart.className =
+        "floating-heart";
+
+
+    heart.innerHTML =
+        floatingHearts[
+            Math.floor(
+                Math.random()
+                *
+                floatingHearts.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random()
+        * 100 +
+        "%";
+
+
+    heart.style.fontSize =
+        (
+            15 +
+            Math.random() * 25
+        ) +
+        "px";
+
+
+    heart.style.animationDuration =
+        (
+            6 +
+            Math.random() * 8
+        ) +
+        "s";
+
+
+    heart.style.animationDelay =
+        Math.random() * 8 +
+        "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+}
+
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti() {
+
+
+    const symbols = [
+
+        "❤️",
+        "💕",
+        "💖",
+        "✨",
+        "💗"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 60;
+        i++
+    ) {
+
+
+        const piece =
+            document.createElement(
+                "div"
+            );
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    *
+                    symbols.length
+                )
+            ];
+
+
+        piece.style.left =
+            Math.random()
+            * 100 +
+            "vw";
+
+
+        piece.style.fontSize =
+            (
+                12 +
+                Math.random() * 18
+            ) +
+            "px";
+
+
+        piece.style.animationDuration =
+            (
+                2 +
+                Math.random() * 2
+            ) +
+            "s";
+
+
+        piece.style.animationDelay =
+            Math.random()
+            * 0.8 +
+            "s";
+
+
+        document.body.appendChild(
+            piece
+        );
+
+
+        setTimeout(
+            () => {
+
+                piece.remove();
+
+            },
+            4000
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FINISH
+===================================================== */
+
+function celebrate() {
+
+
+    createConfetti();
+
+
+    setTimeout(
+        () => {
+
+            alert(
+                "Happy Valentine's Day, Nancy! ❤️"
+            );
+
+        },
+        800
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
